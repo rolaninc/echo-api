@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   getCurrentCursorPosition,
   setCursorPosition,
-} from '../utils/text-selection'
+} from '../../utils/text-selection'
 
 type Props = {
   text?: string

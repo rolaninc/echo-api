@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import Demo from '../components/Demo'
+import Demo from '../components/demo/Demo'
 
 const Page = () => {
   return (

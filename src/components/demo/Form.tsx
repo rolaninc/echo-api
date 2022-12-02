@@ -1,22 +1,30 @@
-import Editor from './Editor'
-import { useForm } from 'react-hook-form'
 import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import Editor from '../@ui/Editor'
 
-const Form = () => {
+export type Input = {
+  body: string
+}
+
+type Props = {
+  onSubmit: (input: Input) => Promise<boolean>
+}
+
+const Form = (props: Props) => {
   const {
     register,
     handleSubmit,
     setValue,
     trigger,
     formState: { isValid },
-  } = useForm({
+  } = useForm<Input>({
     defaultValues: {
       body: '{}',
     },
   })
 
   const onSubmit = async (input) => {
-    console.log(input)
+    const _ = await props.onSubmit(input)
   }
 
   useEffect(() => {

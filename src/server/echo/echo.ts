@@ -27,7 +27,7 @@ type EchoResponse = {
 
 const echo = (req: EchoRequest): EchoResponse => {
   const statusCode = req.statusCode ?? 200
-  const body = convert(req.body ?? { message: 'hello world.' }, [dateConverter])
+  const body = convert(req.body ?? req, [dateConverter])
   const headers = req.headers
   const duration = req.options?.duration
   return { statusCode, body, headers, duration }

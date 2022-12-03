@@ -1,8 +1,20 @@
-import { TbCopy, TbX } from 'react-icons/tb'
+import {
+  TbAlertCircle,
+  TbAlertTriangle,
+  TbCircleCheck,
+  TbCopy,
+  TbInfoCircle,
+  TbX,
+} from 'react-icons/tb'
 
 const _VARIANTS = {
   close: (css?: string) => <TbX className={css} />,
   copy: (css?: string) => <TbCopy className={css} />,
+
+  success: (css?: string) => <TbCircleCheck className={css} />,
+  error: (css?: string) => <TbAlertCircle className={css} />,
+  warning: (css?: string) => <TbAlertTriangle className={css} />,
+  info: (css?: string) => <TbInfoCircle className={css} />,
 }
 export type IconVariant = keyof typeof _VARIANTS
 

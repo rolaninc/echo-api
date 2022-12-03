@@ -1,16 +1,23 @@
+import Icon from './@ui/Icon'
+
 const Footer = () => {
   return (
     <div className="h-full flex justify-between items-center">
       <div />
       <div className="px-6 py-1">
         <a
-          href="https://www.rolan.co.jp"
+          href="https://github.com/rolaninc/echo-api"
           target="_blank"
           rel="noopener noreferrer"
+          className=""
         >
-          rolan, inc.
+          <span className="flex items-center space-x-1 hover:scale-150 transition-transform">
+            <Icon variant="github" />
+            <p className="text-sm">GitHub</p>
+          </span>
         </a>
       </div>
+      <div />
     </div>
   )
 }

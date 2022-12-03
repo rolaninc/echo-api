@@ -1,6 +1,7 @@
 import {
   TbAlertCircle,
   TbAlertTriangle,
+  TbBrandGithub,
   TbCircleCheck,
   TbCode,
   TbCodePlus,
@@ -14,11 +15,11 @@ const _VARIANTS = {
   code: (css?: string) => <TbCode className={css} />,
   codePlus: (css?: string) => <TbCodePlus className={css} />,
   copy: (css?: string) => <TbCopy className={css} />,
-
-  success: (css?: string) => <TbCircleCheck className={css} />,
   error: (css?: string) => <TbAlertCircle className={css} />,
-  warning: (css?: string) => <TbAlertTriangle className={css} />,
+  github: (css?: string) => <TbBrandGithub className={css} />,
   info: (css?: string) => <TbInfoCircle className={css} />,
+  success: (css?: string) => <TbCircleCheck className={css} />,
+  warning: (css?: string) => <TbAlertTriangle className={css} />,
 }
 export type IconVariant = keyof typeof _VARIANTS
 

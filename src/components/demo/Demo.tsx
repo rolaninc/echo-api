@@ -1,8 +1,10 @@
 import Form, { Input } from './Form'
 import { useToast } from '../@ui/Toast'
+import { useEchoTemplate } from '../../hooks/use-echo-template'
 import { client } from '../../lib/http'
 
 const Demo = () => {
+  const { data } = useEchoTemplate()
   const toast = useToast()
 
   const onSubmit = async (input: Input) => {
@@ -26,10 +28,12 @@ const Demo = () => {
     return false
   }
 
+  const template = data ? JSON.stringify(data, undefined, 2) : '{}'
+
   return (
     <div className="h-full grid grid-cols-1 md:grid-cols-2 gap-2">
       <div>
-        <Form onSubmit={onSubmit} />
+        <Form template={template} onSubmit={onSubmit} />
       </div>
       <div className="bg-blue-200">Output</div>
     </div>

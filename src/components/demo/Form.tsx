@@ -2,18 +2,22 @@ import { useForm } from 'react-hook-form'
 import Textarea from '../@ui/Textarea'
 import Icon from '../@ui/Icon'
 import Tooltip from '../@ui/Tooltip'
+import { useEffect } from 'react'
 
 export type Input = {
   body: string
 }
 
 type Props = {
-  shouldReset?: boolean
+  template?: string
   onSubmit: (input: Input) => Promise<boolean>
+  shouldReset?: boolean
 }
 
 const Form = (props: Props) => {
   const { shouldReset } = props
+  const template = props.template ?? '{}'
+
   const {
     register,
     handleSubmit,
@@ -22,10 +26,10 @@ const Form = (props: Props) => {
     setError,
     clearErrors,
     reset,
-    formState: { isValid, errors },
+    formState: { isValid, isDirty, errors },
   } = useForm<Input>({
     defaultValues: {
-      body: '{}',
+      body: template,
     },
   })
 
@@ -36,6 +40,20 @@ const Form = (props: Props) => {
     }
   }
 
+  const validation = (body?: string) => {
+    // Oops...Do I have to handle errors by myself??
+    clearErrors('body')
+    if (body) {
+      try {
+        JSON.parse(body)
+        return true
+      } catch (e) {
+        setError('body', { type: 'format', message: e.message })
+      }
+    }
+    return false
+  }
+
   const body = watch('body')
   const format = () => {
     try {
@@ -43,11 +61,23 @@ const Form = (props: Props) => {
       setValue('body', JSON.stringify(data, undefined, 2))
     } catch (e) {}
   }
-  const formatShortcut = (e) => {
+  const clearInput = () => {
+    reset()
+  }
+
+  const onKeyDown = (e) => {
     if (e.key === 'f' && e.metaKey && e.shiftKey) {
+      e.preventDefault()
       format()
+    } else if (e.key === 'Dead' && e.metaKey && e.altKey) {
+      e.stopPropagation()
+      clearInput()
     }
   }
+
+  useEffect(() => {
+    reset({ body: template })
+  }, [template])
 
   return (
     <form
@@ -59,7 +89,29 @@ const Form = (props: Props) => {
         {/*Header*/}
         <div className="w-full h-[44px] bg-transparent flex justify-end items-center border-b border-color px-4">
           <div className="flex items-center space-x-2">
-            <Tooltip text="cmd + shift + f" className="!bg-sky-500">
+            <Tooltip
+              title="New Template"
+              description="cmd + opt + n"
+              className="!bg-sky-500"
+            >
+              <button
+                type="button"
+                onClick={clearInput}
+                disabled={!isDirty}
+                className="
+                p-1 rounded-lg disabled:opacity-25
+                enabled:hover:bg-gray-100 enabled:dark:hover:bg-gray-700
+                "
+              >
+                <Icon variant="codePlus" className="w-[20px] h-[20px]" />
+              </button>
+            </Tooltip>
+
+            <Tooltip
+              title="Format"
+              description="cmd + shift + f"
+              className="!bg-sky-500"
+            >
               <button
                 type="button"
                 onClick={format}
@@ -79,22 +131,10 @@ const Form = (props: Props) => {
         <Textarea
           {...register('body', {
             required: true,
-            validate: (body?: string) => {
-              // Oops...Do I have to handle errors by myself??
-              clearErrors('body')
-              if (body) {
-                try {
-                  JSON.parse(body)
-                  return true
-                } catch (e) {
-                  setError('body', { type: 'format', message: e.message })
-                }
-              }
-              return false
-            },
+            validate: validation,
           })}
           aria-invalid={errors.body ? 'true' : 'false'}
-          onKeyDown={formatShortcut}
+          onKeyDown={onKeyDown}
           className="
           resize-none w-full h-[calc(100%-44px)] px-4 pb-4 pt-2 bg-transparent rounded-b-lg
           font-mono text-sm

@@ -36,13 +36,13 @@ const echo = (req: EchoRequest): EchoResponse => {
 const example = {
   statusCode: 200,
   body: {
-    message: 'the body object will return back from the api as a response body',
+    message: 'Hello, Echo.API',
   },
   headers: {
-    'x-custom': 'echo/custom-header-value',
+    'x-echo': 'echo/api',
   },
   options: {
-    duration: 500,
+    duration: 0,
   },
 }
 

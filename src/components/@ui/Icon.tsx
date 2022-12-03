@@ -2,6 +2,7 @@ import {
   TbAlertCircle,
   TbAlertTriangle,
   TbCircleCheck,
+  TbCode,
   TbCopy,
   TbInfoCircle,
   TbX,
@@ -9,6 +10,7 @@ import {
 
 const _VARIANTS = {
   close: (css?: string) => <TbX className={css} />,
+  code: (css?: string) => <TbCode className={css} />,
   copy: (css?: string) => <TbCopy className={css} />,
 
   success: (css?: string) => <TbCircleCheck className={css} />,

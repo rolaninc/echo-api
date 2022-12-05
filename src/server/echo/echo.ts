@@ -1,5 +1,6 @@
-import { convert } from './converter'
-import { dateConverter } from './date-converter'
+import { transform, Transformer } from './transform/transform'
+import { sanitizer } from './transform/sanitizer'
+import { dateTransformer } from './transform/date-transformer'
 
 export type EchoRequest = {
   statusCode?: number
@@ -25,10 +26,12 @@ type EchoResponse = {
   duration?: number
 }
 
+const tools: Transformer[] = [dateTransformer, sanitizer]
+
 const echo = (req: EchoRequest): EchoResponse => {
   const statusCode = req.statusCode ?? 200
-  const body = convert(req.body ?? req, [dateConverter])
-  const headers = req.headers
+  const body = transform(req.body ?? req, tools)
+  const headers = req.headers ? transform(req.headers, tools) : undefined
   const duration = req.options?.duration
   return { statusCode, body, headers, duration }
 }

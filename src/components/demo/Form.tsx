@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form'
 import Textarea from '../@ui/Textarea'
 import Icon from '../@ui/Icon'
 import Tooltip from '../@ui/Tooltip'
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 
 export type Input = {
   body: string
@@ -65,15 +65,31 @@ const Form = (props: Props) => {
     reset()
   }
 
-  const onKeyDown = (e) => {
-    if (e.key === 'f' && e.metaKey && e.shiftKey) {
-      e.preventDefault()
-      format()
-    } else if (e.key === 'Dead' && e.metaKey && e.altKey) {
-      e.stopPropagation()
-      clearInput()
+  const onKeyDown = useCallback(
+    (e) => {
+      console.log(e.key, e.metaKey, e.altKey, e.shiftKey)
+
+      if (e.key === 'f' && e.metaKey && e.shiftKey) {
+        e.preventDefault()
+        format()
+      } else if (e.key === 'Dead' && e.metaKey && e.altKey) {
+        e.preventDefault()
+        clearInput()
+      } else if (e.key === 'Enter' && e.altKey) {
+        if (isValid) {
+          e.preventDefault()
+          handleSubmit(onSubmit)(e)
+        }
+      }
+    },
+    [body]
+  )
+  useEffect(() => {
+    document.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
     }
-  }
+  }, [body])
 
   useEffect(() => {
     reset({ body: template })
@@ -85,7 +101,10 @@ const Form = (props: Props) => {
       className="px-6 py-4 h-full flex flex-col space-y-4"
     >
       {/*Editor*/}
-      <div className="grow rounded-lg secondary-background-color relative">
+      <div
+        className="grow rounded-lg secondary-background-color relative"
+        tabIndex={0}
+      >
         {/*Header*/}
         <div className="w-full h-[44px] bg-transparent flex justify-end items-center border-b border-color px-4">
           <div className="flex items-center space-x-2">
@@ -134,11 +153,7 @@ const Form = (props: Props) => {
             validate: validation,
           })}
           aria-invalid={errors.body ? 'true' : 'false'}
-          onKeyDown={onKeyDown}
-          className="
-          resize-none w-full h-[calc(100%-44px)] px-4 pb-4 pt-2 bg-transparent rounded-b-lg
-          font-mono text-sm
-          "
+          className="code resize-none w-full h-[calc(100%-44px)] px-4 pb-4 pt-2 bg-transparent rounded-b-lg"
         />
 
         {/*Error message*/}
@@ -158,18 +173,24 @@ const Form = (props: Props) => {
 
       {/*Submit Button*/}
       <div className="flex justify-center items-center">
-        <button
-          type="submit"
-          disabled={!isValid}
-          className="
+        <Tooltip
+          title="Send request"
+          description="opt + return"
+          className="!bg-sky-500"
+        >
+          <button
+            type="submit"
+            disabled={!isValid}
+            className="
           px-3 py-1 rounded-lg border disabled:opacity-25
           text-sm font-semibold text-color border-color
           enabled:hover:bg-gray-100 enabled:dark:hover:bg-gray-700
-          enabled:transition enabled:transform enabled:hover:scale-125
+          {/*enabled:transition enabled:transform enabled:hover:scale-125*/}
           "
-        >
-          Send
-        </button>
+          >
+            Send
+          </button>
+        </Tooltip>
       </div>
     </form>
   )

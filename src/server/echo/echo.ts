@@ -47,6 +47,7 @@ const example = {
   statusCode: 200,
   body: {
     message: 'Hello, Echo.api',
+    created: '--iso*-86400',
   },
   headers: {
     'x-echo': 'echo/api',

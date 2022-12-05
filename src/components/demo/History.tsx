@@ -54,7 +54,7 @@ const History = (props: Props) => {
             {item.body ? (
               <div className="space-y-3">
                 <div className="flex justify-between items-center text-gray-400 dark:text-gray-600">
-                  <p className="font-black text-xs">BODY</p>
+                  <p className="font-black text-xs">RESPONSE BODY</p>
                   <Copy
                     text={item.body}
                     className="text-xs hover:scale-125 transition"

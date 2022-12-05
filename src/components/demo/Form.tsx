@@ -67,8 +67,6 @@ const Form = (props: Props) => {
 
   const onKeyDown = useCallback(
     (e) => {
-      console.log(e.key, e.metaKey, e.altKey, e.shiftKey)
-
       if (e.key === 'f' && e.metaKey && e.shiftKey) {
         e.preventDefault()
         format()

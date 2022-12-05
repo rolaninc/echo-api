@@ -10,7 +10,6 @@ client.interceptors.request.use(
     return config
   },
   (e) => {
-    console.error('http client error:', e)
     return Promise.reject(e)
   }
 )

@@ -10,10 +10,10 @@ const Page = () => {
         <title>Echo.API</title>
         {/*TODO: replace favicon*/}
       </Head>
-      <header className="h-[54px]">
+      <header className="h-[64px]">
         <Header />
       </header>
-      <main className="h-[calc(100%-98px)]">
+      <main className="h-[calc(100%-108px)]">
         <div className="h-full">
           <Demo />
         </div>

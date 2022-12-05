@@ -11,9 +11,9 @@ const Footer = () => {
           rel="noopener noreferrer"
           className=""
         >
-          <span className="flex items-center space-x-1 hover:scale-150 transition-transform">
+          <span className="flex items-center space-x-1 hover:scale-150 transition-transform font-medium text-xs">
             <Icon variant="github" />
-            <p className="text-sm">GitHub</p>
+            <p>GitHub</p>
           </span>
         </a>
       </div>

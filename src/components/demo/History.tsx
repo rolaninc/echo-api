@@ -33,7 +33,7 @@ const History = (props: Props) => {
     <div className="px-6 py-4 w-full h-full">
       <ul
         role="list"
-        className="h-full p-2 space-y-4 rounded-lg secondary-background-color overflow-auto"
+        className="h-full p-2 space-y-2 rounded-lg secondary-background-color overflow-auto"
       >
         {/*REFACTOR: list items */}
         {items.map((item) => (

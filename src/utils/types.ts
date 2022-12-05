@@ -1,6 +1,6 @@
 export const Types = {
   isObject(v: any): boolean {
-    return v === Object(v)
+    return v?.constructor === Object
   },
 
   isArray(v: any): boolean {

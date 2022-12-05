@@ -6,7 +6,7 @@ const Footer = () => {
       <div />
       <div className="px-6 py-1">
         <a
-          href="https://github.com/rolaninc/echo-api"
+          href="https://github.com/tom-e-kid/echo-api"
           target="_blank"
           rel="noopener noreferrer"
           className=""

@@ -46,7 +46,7 @@ const echo = (req: EchoRequest): EchoResponse => {
 const example = {
   statusCode: 200,
   body: {
-    message: 'Hello, Echo.API',
+    message: 'Hello, Echo.api',
   },
   headers: {
     'x-echo': 'echo/api',

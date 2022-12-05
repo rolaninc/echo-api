@@ -7,7 +7,7 @@ const Page = () => {
   return (
     <div className="w-screen h-screen background-color text-color">
       <Head>
-        <title>Echo.API</title>
+        <title>Echo.api</title>
         {/*TODO: replace favicon*/}
       </Head>
       <header className="h-[64px]">

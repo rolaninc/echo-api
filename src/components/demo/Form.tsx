@@ -15,7 +15,7 @@ type Props = {
 }
 
 const Form = (props: Props) => {
-  const { shouldReset } = props
+  const { shouldReset, onSubmit: submit } = props
   const template = props.template ?? '{}'
 
   const {
@@ -33,12 +33,15 @@ const Form = (props: Props) => {
     },
   })
 
-  const onSubmit = async (input) => {
-    const ret = await props.onSubmit(input)
-    if (ret && shouldReset) {
-      reset()
-    }
-  }
+  const onSubmit = useCallback(
+    async (input) => {
+      const ret = await submit(input)
+      if (ret && shouldReset) {
+        reset()
+      }
+    },
+    [reset, submit, shouldReset]
+  )
 
   const validation = (body?: string) => {
     // Oops...Do I have to handle errors by myself??
@@ -55,15 +58,16 @@ const Form = (props: Props) => {
   }
 
   const body = watch('body')
-  const format = () => {
+  const format = useCallback(() => {
     try {
       const data = JSON.parse(body)
       setValue('body', JSON.stringify(data, undefined, 2))
     } catch (e) {}
-  }
-  const clearInput = () => {
+  }, [body, setValue])
+
+  const clearInput = useCallback(() => {
     reset()
-  }
+  }, [reset])
 
   const onKeyDown = useCallback(
     (e) => {
@@ -80,18 +84,18 @@ const Form = (props: Props) => {
         }
       }
     },
-    [body]
+    [format, clearInput, handleSubmit, onSubmit, isValid]
   )
   useEffect(() => {
     document.addEventListener('keydown', onKeyDown)
     return () => {
       document.removeEventListener('keydown', onKeyDown)
     }
-  }, [body])
+  }, [onKeyDown])
 
   useEffect(() => {
     reset({ body: template })
-  }, [template])
+  }, [reset, template])
 
   return (
     <form

@@ -11,8 +11,8 @@ router
     res.json(example)
   })
   .post(async (req, res) => {
-    //TODO: I should validate to incoming contents ...maybe
     const { statusCode, body, headers, duration } = echo(req.body)
+    //TODO: should review the change of response headers is needed or not
     if (headers) {
       Object.entries(headers).forEach(([k, v]) => {
         res.setHeader(k, v)

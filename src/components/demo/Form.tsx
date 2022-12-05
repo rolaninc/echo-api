@@ -162,13 +162,12 @@ const Form = (props: Props) => {
         {errors.body?.message && (
           <div
             className="
-          absolute left-[8px] bottom-[8px] w-[calc(100%-16px)] p-1 rounded-lg flex justify-center items-center
-          bg-destructive-500 dark:bg-destructive-dark-500
-          "
+            absolute left-[8px] bottom-[8px] w-[calc(100%-16px)] px-3 py-2 rounded-lg flex justify-center items-center
+            bg-destructive-500 dark:bg-destructive-dark-500
+            text-white font-mono text-sm
+            "
           >
-            <p className="text-white font-mono text-sm">
-              {errors.body.message}
-            </p>
+            <p>{errors.body.message}</p>
           </div>
         )}
       </div>
@@ -184,11 +183,11 @@ const Form = (props: Props) => {
             type="submit"
             disabled={!isValid}
             className="
-          px-3 py-1 rounded-lg border disabled:opacity-25
-          text-sm font-semibold text-color border-color
-          enabled:hover:bg-gray-100 enabled:dark:hover:bg-gray-700
-          {/*enabled:transition enabled:transform enabled:hover:scale-125*/}
-          "
+            px-3 py-1 rounded-lg border disabled:opacity-25
+            text-sm font-semibold text-color border-color
+            enabled:hover:bg-gray-100 enabled:dark:hover:bg-gray-700
+            {/*enabled:transition enabled:transform enabled:hover:scale-125*/}
+            "
           >
             Send
           </button>

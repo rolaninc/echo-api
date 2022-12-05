@@ -63,18 +63,19 @@ const History = (props: Props) => {
                 <code className="code whitespace-pre-wrap">{item.body}</code>
               </div>
             ) : undefined}
-            {item.headers ? (
-              <div>
-                <div className="flex justify-between items-center text-gray-400 dark:text-gray-600">
-                  <p className="font-black text-xs">HEADERS</p>
-                  <Copy
-                    text={item.headers}
-                    className="text-xs hover:scale-125 transition"
-                  />
-                </div>
-                <code className="code">{item.headers}</code>
-              </div>
-            ) : undefined}
+            {/*I don't think it's a good idea to show all header values here*/}
+            {/*{item.headers ? (*/}
+            {/*  <div>*/}
+            {/*    <div className="flex justify-between items-center text-gray-400 dark:text-gray-600">*/}
+            {/*      <p className="font-black text-xs">HEADERS</p>*/}
+            {/*      <Copy*/}
+            {/*        text={item.headers}*/}
+            {/*        className="text-xs hover:scale-125 transition"*/}
+            {/*      />*/}
+            {/*    </div>*/}
+            {/*    <code className="code">{item.headers}</code>*/}
+            {/*  </div>*/}
+            {/*) : undefined}*/}
           </div>
         ))}
       </ul>

@@ -35,4 +35,6 @@ const Textarea = forwardRef<HTMLTextAreaElement, Props>((props, ref) => {
   return <textarea ref={ref} {...modified} />
 })
 
+Textarea.displayName = 'Textarea'
+
 export default Textarea

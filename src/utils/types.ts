@@ -11,6 +11,10 @@ export const Types = {
     return Object.prototype.toString.call(v) === '[object String]'
   },
 
+  isNumber(v: any): boolean {
+    return Object.prototype.toString.call(v) === '[object Number]' && !isNaN(v)
+  },
+
   isDate(v: any): boolean {
     return Object.prototype.toString.call(v) === '[object Date]'
   },

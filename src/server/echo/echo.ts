@@ -1,8 +1,9 @@
 import { BadRequest } from '../errors/bad-request'
 import { Types } from '../../utils/types'
 import { transform, Transformer } from './transform/transform'
-import { sanitizer } from './transform/sanitizer'
+import { imageTransformer } from './transform/image-transformer'
 import { dateTransformer } from './transform/date-transformer'
+import { sanitizer } from './transform/sanitizer'
 
 export type EchoRequest = {
   statusCode?: number
@@ -28,7 +29,7 @@ type EchoResponse = {
   duration?: number
 }
 
-const tools: Transformer[] = [dateTransformer, sanitizer]
+const tools: Transformer[] = [imageTransformer, dateTransformer, sanitizer]
 
 const echo = (req: EchoRequest): EchoResponse => {
   // EchoRequest(api request's body) must contain JSON OBJECT {}.
@@ -47,7 +48,8 @@ const example = {
   statusCode: 200,
   body: {
     message: 'Hello, Echo.api',
-    created: '--iso*-86400',
+    created: '--iso@@-86400',
+    thumb: '--img@@256/128/hex00f_f00_0f0/hello_world.png',
   },
   headers: {
     'x-echo': 'echo/api',

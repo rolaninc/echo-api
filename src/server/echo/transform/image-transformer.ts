@@ -1,6 +1,8 @@
 import { Types } from '../../../utils/types'
 
-const url = process.env.IMAGES_URL ?? 'http://localhost:3000/images'
+const urlPrefix = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : 'http://localhost:3000'
 
 export const imageTransformer = (input: string) => {
   const components = input.split('@@')
@@ -9,9 +11,9 @@ export const imageTransformer = (input: string) => {
     if (prefix === '--img') {
       const suffix = components[1]
       if (suffix) {
-        return `${url}/${suffix}`
+        return `${urlPrefix}/images/${suffix}`
       }
-      return `${url}/512.jpg`
+      return `${urlPrefix}/images/512.jpg`
     }
   }
   return input

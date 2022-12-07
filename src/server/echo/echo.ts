@@ -49,7 +49,7 @@ const example = {
   body: {
     message: 'Hello, Echo.api',
     created: '--iso@@-86400',
-    thumb: '--img@@256/128/hex00f_f00_0f0/hello_world.png',
+    thumb: '--img@@256/128/hex_00f_f00_0f0/hello_world.png',
   },
   headers: {
     'x-echo': 'echo/api',

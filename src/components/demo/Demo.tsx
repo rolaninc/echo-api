@@ -80,7 +80,7 @@ const Demo = () => {
     }
   }, [items])
 
-  const template = data ? JSON.stringify(data, undefined, 2) : '{}'
+  const template = data ? JSON.stringify(data, undefined, 2) : ''
   return (
     <div className="h-full grid grid-cols-1 md:grid-cols-2 gap-0">
       <div className="min-h-[480px]">

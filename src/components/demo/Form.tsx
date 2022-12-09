@@ -16,7 +16,7 @@ type Props = {
 
 const Form = (props: Props) => {
   const { shouldReset, onSubmit: submit } = props
-  const template = props.template ?? '{}'
+  const template = props.template ?? ''
 
   const {
     register,
@@ -155,6 +155,7 @@ const Form = (props: Props) => {
             validate: validation,
           })}
           aria-invalid={errors.body ? 'true' : 'false'}
+          placeholder="Create your request as JSON format"
           className="code resize-none w-full h-[calc(100%-44px)] px-4 pb-4 pt-2 bg-transparent rounded-b-lg"
         />
 

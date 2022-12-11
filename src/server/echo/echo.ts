@@ -1,9 +1,13 @@
 import { BadRequest } from '../errors/bad-request'
-import { Types } from '../../utils/types'
 import { transform, Transformer } from './transform/transform'
-import { imageTransformer } from './transform/image-transformer'
-import { dateTransformer } from './transform/date-transformer'
+import { idTransformer } from './transform/id'
+import { imageTransformer } from './transform/image'
+import { dateTransformer } from './transform/date'
 import { sanitizer } from './transform/sanitizer'
+import { nameTransformer } from './transform/name'
+import { emailTransformer as emailPostTransformer } from './transform/email'
+import { metaTransformer } from './transform/meta'
+import { isObject } from '../../utils/types'
 
 export type EchoRequest = {
   statusCode?: number
@@ -29,11 +33,19 @@ type EchoResponse = {
   duration?: number
 }
 
-const tools: Transformer[] = [imageTransformer, dateTransformer, sanitizer]
+const tools: Transformer[] = [
+  metaTransformer,
+  idTransformer,
+  nameTransformer,
+  imageTransformer,
+  dateTransformer,
+  emailPostTransformer,
+  sanitizer,
+]
 
 const echo = (req: EchoRequest): EchoResponse => {
   // EchoRequest(api request's body) must contain JSON OBJECT {}.
-  if (!Types.isObject(req)) {
+  if (!isObject(req)) {
     throw new BadRequest(`You must post JSON object starts with {}.`)
   }
 
@@ -47,9 +59,20 @@ const echo = (req: EchoRequest): EchoResponse => {
 const example = {
   statusCode: 200,
   body: {
-    message: 'Hello, Echo.api',
-    created: '--iso@@-86400',
-    thumb: '--img@@256/128/hex_00f_f00_0f0/hello_world.png',
+    __meta__: {
+      users: {
+        l: {
+          count: 10,
+        },
+      },
+    },
+    users: {
+      id: '--id',
+      email: '--email@@name',
+      name: '--name',
+      thumb: '--img@@256/hex_00f_f00_0f0.png',
+      created: '--iso@@-86400',
+    },
   },
   headers: {
     'x-echo': 'echo/api',

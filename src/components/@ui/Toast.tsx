@@ -7,8 +7,7 @@ import {
   useRef,
   useState,
 } from 'react'
-
-import { generateUIKey } from '../../utils/generator'
+import { generateUIKey } from '../../utils/auto-id-gen'
 import Icon, { icon } from './Icon'
 
 const _STATUSES = {

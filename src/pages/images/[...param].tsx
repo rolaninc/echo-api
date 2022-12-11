@@ -1,7 +1,7 @@
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { client } from '../../lib/http'
-import { Types } from '../../utils/types'
 import { BadRequest } from '../../server/errors/bad-request'
+import { isArray, isNumber } from '../../utils/types'
 
 const Page = (
   props: InferGetServerSidePropsType<typeof getServerSideProps>
@@ -64,7 +64,7 @@ const parseFormat = (s: string) => {
 
 const parseSize = (s: string) => {
   const n = +s
-  if (Types.isNumber(n) && n > 0 && n <= 2048) {
+  if (isNumber(n) && n > 0 && n <= 2048) {
     return n
   }
   return undefined
@@ -87,7 +87,7 @@ const parseLabel = (s: string) => {
 const buildQuery = (params: string[]): Query => {
   // TODO: look for more efficient way...
   let ps = params
-  if (!ps || !Types.isArray(ps) || ps.length === 0 || ps.length > 4) {
+  if (!ps || !isArray(ps) || ps.length === 0 || ps.length > 4) {
     throw new BadRequest(`unexpected parameters`)
   }
 

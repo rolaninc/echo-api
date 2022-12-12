@@ -71,7 +71,8 @@ const example = {
       email: '--email@@name',
       name: '--name',
       thumb: '--img@@/256/hex_00f_f00_0f0.png',
-      created: '--iso@@-86400',
+      created: '--unix@@-604800',
+      updated: '--iso@@-86400',
     },
   },
   headers: {

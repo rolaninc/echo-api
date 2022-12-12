@@ -6,7 +6,7 @@ import { generateName } from '../../../utils/auto-name-gen'
 // --name
 
 export const nameTransformer: Transformer = {
-  transform: (input: string) => {
+  t: (input: string) => {
     const components = input.split('@@')
     if (components.length > 0 && components.length <= 2) {
       if (components[0] === '--name') {

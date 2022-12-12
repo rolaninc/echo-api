@@ -9,7 +9,7 @@ export type Content =
   | { [key: string]: any }[]
 
 export type Transformer = {
-  transform?: (input: string) => string
+  t?: (input: string) => string
   pre?: (input: Content) => Content
   post?: (input: Content) => Content
 }
@@ -30,8 +30,8 @@ export const transform = (content: Content, tools: Transformer[]) => {
   if (str) {
     let mutated = str
     for (const t of tools) {
-      if (t.transform) {
-        mutated = t.transform(mutated)
+      if (t.t) {
+        mutated = t.t(mutated)
       }
     }
     return mutated
@@ -60,34 +60,4 @@ export const transform = (content: Content, tools: Transformer[]) => {
     return mutated
   }
   return undefined
-
-  // if (Types.isNumber(content)) {
-  //   return content
-  // } else if (Types.isString(content)) {
-  //   let str = stringify(content)
-  //   for (const t of tools) {
-  //     if (t.transform) {
-  //       str = t.transform(str)
-  //     }
-  //   }
-  //   return str
-  // } else if (Types.isArray(content)) {
-  //   return (content as unknown[]).map((c) => transform(c, tools))
-  // } else if (Types.isObject(content)) {
-  //   // pre object transform
-  //   let m = content
-  //   for (const t of tools.filter((t) => t.t === 'pre')) {
-  //     m = t.transform(m)
-  //   }
-  //   let e = {}
-  //   for (const [k, v] of Object.entries(m)) {
-  //     e[k] = transform(v, tools)
-  //   }
-  //   // post object transform
-  //   for (const t of tools.filter((t) => t.t === 'post')) {
-  //     e = t.transform(e)
-  //   }
-  //   return e
-  // }
-  // return undefined
 }

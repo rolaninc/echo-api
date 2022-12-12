@@ -20,9 +20,14 @@ export const metaTransformer: Transformer = {
     // support multiple emails
     const symbol = '__meta__'
     for (const [k, v] of Object.entries(input)) {
-      if (k === symbol && isObject(v)) {
-        for (const [mk, mv] of Object.entries(v as any)) {
-          mutate(input, mk, mv as Instruction)
+      if (k === symbol) {
+        if (isObject(v)) {
+          const keys = Object.keys(input)
+          for (const [mk, mv] of Object.entries(v as any)) {
+            if (keys.includes(mk)) {
+              mutate(input, mk, mv as Instruction)
+            }
+          }
         }
         delete input[k]
       }

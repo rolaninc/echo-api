@@ -6,7 +6,7 @@ import { generateUIKey } from '../../../utils/auto-id-gen'
 // --id
 
 export const idTransformer: Transformer = {
-  transform: (input: string) => {
+  t: (input: string) => {
     const components = input.split('@@')
     if (components.length > 0 && components.length <= 2) {
       if (components[0] === '--id') {

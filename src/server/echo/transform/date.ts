@@ -19,7 +19,7 @@ const _SYMBOLS = {
 }
 
 export const dateTransformer: Transformer = {
-  transform: (input: string) => {
+  t: (input: string) => {
     const components = input.split('@@')
     if (components.length > 0 && components.length <= 2) {
       const prefix = components[0]

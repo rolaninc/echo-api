@@ -1,17 +1,16 @@
 import { Content, Transformer } from './transform'
 import { generateName } from '../../../utils/auto-name-gen'
 import { isString } from '../../../utils/types'
+import { generateDomain } from '../../../utils/auto-domain-gen'
 
 // FORMAT:
 // --email@@[ref key]@[example.com]
 // --email@@[ref key]
 // --email
 
-const defaultDomain = 'example.com'
-
 const transformValue = (src: any, key: string, instructions: string[]) => {
   if (instructions.length === 0) {
-    return generateName(['first']) + '@' + defaultDomain
+    return generateName(['first']) + '@' + generateDomain()
   }
   if (instructions.length > 0 && instructions.length < 3) {
     let referenceValue: string | undefined = undefined
@@ -23,7 +22,7 @@ const transformValue = (src: any, key: string, instructions: string[]) => {
       }
     }
     if (referenceValue) {
-      let domain = instructions[1] ?? defaultDomain
+      let domain = instructions[1] ?? generateDomain()
       return `${referenceValue}@${domain}`
     }
   }

@@ -70,7 +70,7 @@ const example = {
       id: '--id',
       email: '--email@@name',
       name: '--name',
-      thumb: '--img@@256/hex_00f_f00_0f0.png',
+      thumb: '--img@@/256/hex_00f_f00_0f0.png',
       created: '--iso@@-86400',
     },
   },

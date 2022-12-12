@@ -16,7 +16,7 @@ export const imageTransformer: Transformer = {
       if (prefix === '--img') {
         const suffix = components[1]
         if (suffix) {
-          return `${urlPrefix}/images/${suffix}`
+          return `${urlPrefix}/images${suffix}`
         }
         return `${urlPrefix}/images/512.jpg`
       }

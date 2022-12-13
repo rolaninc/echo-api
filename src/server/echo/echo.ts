@@ -1,12 +1,13 @@
 import { BadRequest } from '../errors/bad-request'
 import { transform, Transformer } from './transform/transform'
+import { dateTransformer } from './transform/date'
+import { emailTransformer } from './transform/email'
 import { idTransformer } from './transform/id'
 import { imageTransformer } from './transform/image'
-import { dateTransformer } from './transform/date'
-import { sanitizer } from './transform/sanitizer'
-import { nameTransformer } from './transform/name'
-import { emailTransformer as emailPostTransformer } from './transform/email'
+import { loremTransformer } from './transform/lorem'
 import { metaTransformer } from './transform/meta'
+import { nameTransformer } from './transform/name'
+import { sanitizer } from './transform/sanitizer'
 import { isObject } from '../../utils/types'
 
 export type EchoRequest = {
@@ -34,12 +35,13 @@ type EchoResponse = {
 }
 
 const tools: Transformer[] = [
-  metaTransformer,
-  idTransformer,
-  nameTransformer,
-  imageTransformer,
   dateTransformer,
-  emailPostTransformer,
+  emailTransformer,
+  idTransformer,
+  imageTransformer,
+  loremTransformer,
+  metaTransformer,
+  nameTransformer,
   sanitizer,
 ]
 

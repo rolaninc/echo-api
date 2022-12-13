@@ -1,4 +1,10 @@
-import { arrayify, numberify, objectify, stringify } from '../../../utils/types'
+import {
+  arrayify,
+  isString,
+  numberify,
+  objectify,
+  stringify,
+} from '../../../utils/types'
 
 export type Content =
   | string
@@ -9,7 +15,7 @@ export type Content =
   | { [key: string]: any }[]
 
 export type Transformer = {
-  t?: (input: string) => string
+  t?: (input: string) => Content
   pre?: (input: Content) => Content
   post?: (input: Content) => Content
 }
@@ -31,7 +37,12 @@ export const transform = (content: Content, tools: Transformer[]) => {
     let mutated = str
     for (const t of tools) {
       if (t.t) {
-        mutated = t.t(mutated)
+        const out = t.t(mutated)
+        if (isString(out)) {
+          mutated = out as string
+        } else {
+          return out
+        }
       }
     }
     return mutated

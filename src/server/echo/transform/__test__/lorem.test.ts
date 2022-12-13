@@ -1,4 +1,5 @@
 import { loremTransformer } from '../lorem'
+import { stringify } from '../../../../utils/types'
 
 describe('lorem transformer', () => {
   it('text without options', () => {
@@ -18,18 +19,18 @@ describe('lorem transformer', () => {
   })
   it('text with random length', () => {
     const text = '--lorem@@512:1024!'
-    const ret = loremTransformer.t!(text)
+    const ret = stringify(loremTransformer.t!(text)) ?? ''
     expect(ret.length >= 512 && ret.length <= 1024).toBeTruthy()
   })
   it('text with random capacity', () => {
     const text = '--lorem@@512:1024'
-    const ret = loremTransformer.t!(text)
+    const ret = stringify(loremTransformer.t!(text)) ?? ''
     expect(ret.length >= 512 && ret.length <= 1024).toBeTruthy()
     expect(ret).toMatch(/^\S.+[.?!]$/)
   })
   it('text with random capacity', () => {
     const text = '--lorem@@:1024'
-    const ret = loremTransformer.t!(text)
+    const ret = stringify(loremTransformer.t!(text)) ?? ''
     expect(ret.length >= 0 && ret.length <= 1024).toBeTruthy()
   })
   it('invalid format', () => {

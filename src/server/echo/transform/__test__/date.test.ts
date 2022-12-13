@@ -4,6 +4,7 @@ import {
   dateFromIso8601,
   dateFromUnix,
 } from '../../../../utils/date'
+import { stringify } from '../../../../utils/types'
 
 describe('date transformer', () => {
   const date = new Date()
@@ -33,18 +34,21 @@ describe('date transformer', () => {
   })
 
   it('iso 8601 > current date', () => {
-    const ret = dateTransformer.t!('--iso')
-    expect(approximate(dateFromIso8601(ret), date, 1000)).toBeTruthy()
+    const ret = stringify(dateTransformer.t!('--iso'))
+    expect(ret).toBeDefined()
+    expect(approximate(dateFromIso8601(ret!), date, 1000)).toBeTruthy()
   })
   it('iso 8601 > one week after', () => {
     const d = new Date(date.getTime() + secsOfWeek * 1000)
-    const ret = dateTransformer.t!(`--iso@@${secsOfWeek}`)
-    expect(approximate(dateFromIso8601(ret), d, 1000)).toBeTruthy()
+    const ret = stringify(dateTransformer.t!(`--iso@@${secsOfWeek}`))
+    expect(ret).toBeDefined()
+    expect(approximate(dateFromIso8601(ret!), d, 1000)).toBeTruthy()
   })
   it('iso 8601 > one week before', () => {
     const d = new Date(date.getTime() - secsOfWeek * 1000)
-    const ret = dateTransformer.t!(`--iso@@-${secsOfWeek}`)
-    expect(approximate(dateFromIso8601(ret), d, 1000)).toBeTruthy()
+    const ret = stringify(dateTransformer.t!(`--iso@@-${secsOfWeek}`))
+    expect(ret).toBeDefined()
+    expect(approximate(dateFromIso8601(ret!), d, 1000)).toBeTruthy()
   })
   it('iso 8601 > invalid format', () => {
     const invalid = `--iso@${secsOfWeek}`

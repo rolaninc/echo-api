@@ -12,7 +12,10 @@ import { isObject } from '../../utils/types'
 
 export type EchoRequest = {
   statusCode?: number
-  body: {
+  body?: {
+    [key: string]: any
+  }
+  error?: {
     [key: string]: any
   }
   headers?: {
@@ -52,7 +55,11 @@ const echo = (req: EchoRequest): EchoResponse => {
   }
 
   const statusCode = req.statusCode ?? 200
-  const body = transform(req.body ?? req, tools)
+  const targetBody =
+    statusCode >= 200 && statusCode < 300
+      ? req.body ?? req
+      : req.error ?? req.body ?? req
+  const body = transform(targetBody, tools)
   const headers = req.headers ? transform(req.headers, tools) : undefined
   const duration = req.options?.duration
   return { statusCode, body, headers, duration }
@@ -77,6 +84,9 @@ const example = {
       created: '--unix@@-604800',
       updated: '--iso@@-86400',
     },
+  },
+  error: {
+    errors: [{ message: 'Something went wrong 🤖' }],
   },
   headers: {
     'x-echo': 'echo/api',

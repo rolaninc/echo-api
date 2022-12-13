@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AxiosError } from 'axios'
 import { client } from '../../lib/http'
-import { generateUIKey } from '../../utils/auto-id-gen'
+import { generateUIKey } from '../../generators/gen-id'
 import { useEchoTemplate } from '../../hooks/use-echo-template'
 import { useToast } from '../@ui/Toast'
 import Form, { Input } from './Form'

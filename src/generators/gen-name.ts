@@ -1,3 +1,5 @@
+import { randomInt } from '../utils/random'
+
 const _SEEDS = {
   first: [
     'mary',
@@ -54,6 +56,6 @@ export const generateName = (
   seeds
     .map((s) => {
       const seed = _SEEDS[s]
-      return seed[Math.floor(Math.random() * (seed.length - 1))]
+      return seed[randomInt(0, seed.length - 1)]
     })
     .join(sep)

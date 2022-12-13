@@ -1,5 +1,5 @@
 import { Transformer } from './transform'
-import { generateName } from '../../../utils/auto-name-gen'
+import { generateName } from '../../../generators/gen-name'
 
 // FORMAT:
 // --name@@full

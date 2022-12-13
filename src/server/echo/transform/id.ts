@@ -1,5 +1,5 @@
 import { Transformer } from './transform'
-import { generateUIKey } from '../../../utils/auto-id-gen'
+import { generateUIKey } from '../../../generators/gen-id'
 
 // FORMAT:
 // --id@@[T.B.D.]

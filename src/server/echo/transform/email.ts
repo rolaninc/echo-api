@@ -1,7 +1,7 @@
 import { Content, Transformer } from './transform'
-import { generateName } from '../../../utils/auto-name-gen'
+import { generateName } from '../../../generators/gen-name'
 import { isString } from '../../../utils/types'
-import { generateDomain } from '../../../utils/auto-domain-gen'
+import { generateDomain } from '../../../generators/gen-domain'
 
 // FORMAT:
 // --email@@[ref key]@[example.com]

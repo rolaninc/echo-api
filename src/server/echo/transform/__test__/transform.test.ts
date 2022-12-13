@@ -16,6 +16,29 @@ describe('transform', () => {
     spyPost.mockClear()
   }
 
+  it('boolean true', () => {
+    reset()
+
+    const flag = true
+    const ret = transform(flag, [tool])
+    expect(ret).toStrictEqual(flag)
+
+    expect(spyT).not.toBeCalled()
+    expect(spyPre).not.toBeCalled()
+    expect(spyPost).not.toBeCalled()
+  })
+  it('boolean false', () => {
+    reset()
+
+    const flag = false
+    const ret = transform(flag, [tool])
+    expect(ret).toStrictEqual(flag)
+
+    expect(spyT).not.toBeCalled()
+    expect(spyPre).not.toBeCalled()
+    expect(spyPost).not.toBeCalled()
+  })
+
   it('number', () => {
     reset()
 

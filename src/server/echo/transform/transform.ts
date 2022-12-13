@@ -1,16 +1,12 @@
-import {
-  arrayify,
-  isString,
-  numberify,
-  objectify,
-  stringify,
-} from '../../../utils/types'
+import { arrayify, isString, objectify, stringify } from '../../../utils/types'
 
 export type Content =
   | string
   | string[]
   | number
   | number[]
+  | boolean
+  | boolean[]
   | { [key: string]: any }
   | { [key: string]: any }[]
 
@@ -21,11 +17,6 @@ export type Transformer = {
 }
 
 export const transform = (content: Content, tools: Transformer[]) => {
-  // number
-  const num = numberify(content)
-  if (num) {
-    return num
-  }
   // array
   const array = arrayify(content)
   if (array) {
@@ -70,5 +61,5 @@ export const transform = (content: Content, tools: Transformer[]) => {
     }
     return mutated
   }
-  return undefined
+  return content
 }

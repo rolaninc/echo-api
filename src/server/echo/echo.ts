@@ -64,7 +64,7 @@ const example = {
     __meta__: {
       users: {
         l: {
-          count: 10,
+          count: 5,
         },
       },
     },
@@ -72,7 +72,8 @@ const example = {
       id: '--id',
       email: '--email@@name',
       name: '--name',
-      thumb: '--img@@/256/hex_00f_f00_0f0.png',
+      thumb: '--image@@512',
+      profile: '--lorem@@:256',
       created: '--unix@@-604800',
       updated: '--iso@@-86400',
     },

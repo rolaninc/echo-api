@@ -3,14 +3,13 @@
 ## What is it?
 Echo.api helps application developers (especially mobile apps developers) at their early stage of development.
 
-it's simple but real world api, so it helps:
-  * design and create app's data models
-  * test these models easily
+it's simple but real world api, so it helps design and create app's data models, and...
+  * test these models immediately
   * test ui components whether they expectedly interact with these models
 
-the one of the most important goals of the api is that it is out of the box service and developers DO NOT need to install any other tools than their usual tools such as Xcode, Android Studio or something.
+the one of the most important goals of the api is that it is out of the box tool and developers DO NOT need to install any other tools than their usual tools such as Xcode, Android Studio or something.
 
-just write requests on your favorite tools and send them using the api 🚀
+just write requests on your favorite tools and send them using Echo.api 🚀
 
 ## How it works
 
@@ -32,7 +31,7 @@ you can control your requests using structured body.
     "__meta__": {
       "users": {
         "l": {
-          "count": 10
+          "count": 5
         }
       }
     },
@@ -40,8 +39,10 @@ you can control your requests using structured body.
       "id": "--id",
       "email": "--email@@name",
       "name": "--name",
-      "thumb": "--img@@/256/hex_00f_f00_0f0.png",
-      "created": "--iso@@-86400"
+      "thumb": "--image@@512",
+      "profile": "--lorem@@:256",
+      "created": "--unix@@-604800",
+      "updated": "--iso@@-86400"
     }
   },
   "headers": {
@@ -77,20 +78,26 @@ then the api will convert them to appropriate dummy data in it's response.
 
 all instructions are optional.
 
-| TAG      | INSTRUCTIONS  | NOTE                                                                                                                               |
-|----------|---------------|------------------------------------------------------------------------------------------------------------------------------------|
-| --id     |               | generate unique string.                                                                                                            |
-| --email  |               | generate string as email format.                                                                                                   |
-|          | target        | you can specified a sibling's attribute as target so that a dynamic value in it's value field will be used as local-part of email. |
-|          | target@domain | can also specified domain.                                                                                                         |
-| --name   |               | generate random first name string.                                                                                                 |
-|          | full          | generate string as 'first last' format.                                                                                            |
-| --unix   |               | generate unix timestamp from server current date.                                                                                  |
-|          | offset(secs)  | specify offsets from server current date.                                                                                          |
-| --iso    |               | generate string as iso8601 format from server current date.                                                                        |
-|          | offset(secs)  | specify offsets from server current date.                                                                                          |
-| --img    |               | generate url for image.                                                                                                            |
-|          | path          | you can customize the output of images with specified path. see more details at images section below                               |
+| TAG     | INSTRUCTIONS   | NOTE                                                                                                                               |
+|---------|----------------|------------------------------------------------------------------------------------------------------------------------------------|
+| --id    |                | generate unique string.                                                                                                            |
+| --email |                | generate string as email format.                                                                                                   |
+|         | target         | you can specified a sibling's attribute as target so that a dynamic value in it's value field will be used as local-part of email. |
+|         | target@domain  | can also specified domain.                                                                                                         |
+| --name  |                | generate random first name string.                                                                                                 |
+|         | full           | generate string as 'first last' format.                                                                                            |
+| --unix  |                | generate unix timestamp from server current date.                                                                                  |
+|         | offset(secs)   | specify offsets from server current date.                                                                                          |
+| --iso   |                | generate string as iso8601 format from server current date.                                                                        |
+|         | offset(secs)   | specify offsets from server current date.                                                                                          |
+| --image |                | generate url for image with random background color.                                                                               |
+|         | width:[height] | you can specify size of the image.                                                                                                 |
+|         | path           | you can customize the output of images with specified path. see more details at images section below                               |
+| --lorem |                | generate text.                                                                                                                     |
+|         | len!           | generate text with fixed size(=len).                                                                                               |
+|         | len            | text may not have its size len, but it will end with punctuation.                                                                  |
+|         | min:max!       | generate text with random size in range min to max.                                                                                |
+|         | min:max        | generate text with random size in range min to max, and it will end with punctuation.                                              |
 
 #### META
 this is kind of magic 🪄  

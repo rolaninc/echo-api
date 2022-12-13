@@ -1,5 +1,4 @@
 import { nameTransformer } from '../name'
-import { dateTransformer } from '../date'
 
 describe('name transformer', () => {
   it('first name only', () => {
@@ -12,7 +11,7 @@ describe('name transformer', () => {
   })
   it('invalid format', () => {
     const invalid = `--name@full`
-    const ret = dateTransformer.t!(invalid)
+    const ret = nameTransformer.t!(invalid)
     expect(ret).toBe(invalid)
   })
   it('uninteresting value', () => {

@@ -25,7 +25,6 @@ describe('lorem transformer', () => {
   it('text with random capacity', () => {
     const text = '--lorem@@512:1024'
     const ret = stringify(loremTransformer.t!(text)) ?? ''
-    expect(ret.length >= 512 && ret.length <= 1024).toBeTruthy()
     expect(ret).toMatch(/^\S.+[.?!]$/)
   })
   it('text with random capacity', () => {

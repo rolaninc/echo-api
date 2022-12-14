@@ -82,6 +82,9 @@ all instructions are optional.
 | TAG     | INSTRUCTIONS   | NOTE                                                                                                                               |
 |---------|----------------|------------------------------------------------------------------------------------------------------------------------------------|
 | --id    |                | generate unique string.                                                                                                            |
+|         | ui             | unique string from current date and random value.  this option will be chosen if the instruction is unspecified.                   |
+|         | cuid           | cuid format                                                                                                                        |
+|         | uuid           | uuid v4 format                                                                                                                     |
 | --email |                | generate string as email format.                                                                                                   |
 |         | target         | you can specified a sibling's attribute as target so that a dynamic value in it's value field will be used as local-part of email. |
 |         | target@domain  | can also specified domain.                                                                                                         |

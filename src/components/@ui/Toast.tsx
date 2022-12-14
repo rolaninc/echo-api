@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from 'react'
-import { generateUIKey } from '../../generators/gen-id'
+import { genUIKey } from '../../generators/gen-id'
 import Icon, { icon } from './Icon'
 
 const _STATUSES = {
@@ -65,7 +65,7 @@ const Toast = (props: Props) => {
 
   const toast = useCallback(
     (config: Config) => {
-      const id = generateUIKey()
+      const id = genUIKey()
       const duration = config.duration ?? 5000
       pool.current[id] = setTimeout(() => {
         clear(id)

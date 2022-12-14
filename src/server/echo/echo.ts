@@ -76,7 +76,7 @@ const example = {
       },
     },
     users: {
-      id: '--id',
+      id: '--id@@cuid',
       email: '--email@@name',
       name: '--name',
       thumb: '--image@@512',

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AxiosError } from 'axios'
 import { client } from '../../lib/http'
-import { generateUIKey } from '../../generators/gen-id'
+import { genUIKey } from '../../generators/gen-id'
 import { useEchoTemplate } from '../../hooks/use-echo-template'
 import { useToast } from '../@ui/Toast'
 import Form, { Input } from './Form'
@@ -14,7 +14,7 @@ const Demo = () => {
   const [items, setItems] = useState<Item[]>([])
 
   const onSubmit = async (input: Input) => {
-    let item = { id: generateUIKey(), status: 'pending' } as Item
+    let item = { id: genUIKey(), status: 'pending' } as Item
     setItems((p) => [item, ...p])
 
     try {

@@ -11,15 +11,17 @@ the one of the most important goals of the api is that it is out of the box tool
 
 just write requests on your favorite tools and send them using Echo.api 🚀
 
+this project has been started as my very personal tool.
+if it's useful to me, I believe, it would be helpful for someone else.  
+***I NEVER LOG ANYTHING ABOUT YOUR REQUESTS.***  
+so please feel free to try it 👉 [the playground](https://echo-api-sigma.vercel.app) .
+and send me any feedbacks. I would love to hear what you think.
+
 ## How it works
 
-POST request to the [api](https://echo-api-sigma.vercel.app/api/echo).  
+POST request to [the api](https://echo-api-sigma.vercel.app/api/echo).  
 then it will send your request's body back to you as a response.
 
-JUST TRY IT at [the playground](https://echo-api-sigma.vercel.app) 👍
-
-I would love to hear what you think.  
-please feel free to send me any feedbacks using [discussions](https://github.com/tom-e-kid/echo-api/discussions).
 
 ### Structured Body
 you can control your requests using structured body.

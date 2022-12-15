@@ -44,16 +44,16 @@ const History = (props: Props) => {
   )
 
   return (
-    <div className="px-6 py-4 w-full h-full">
+    <div className="h-full w-full px-6 py-4">
       <ul
         role="list"
-        className="h-full p-2 space-y-2 rounded-lg secondary-background-color overflow-auto"
+        className="secondary-background-color h-full space-y-2 overflow-auto rounded-lg p-2"
       >
         {/*REFACTOR: list items */}
         {items.map((item) => (
           <div
             key={item.id}
-            className="background-color rounded-lg p-4 space-y-3 drop-shadow-md"
+            className="background-color space-y-3 rounded-lg p-4 drop-shadow-md"
           >
             <Linkify componentDecorator={componentDecorator}>
               <div>
@@ -68,11 +68,11 @@ const History = (props: Props) => {
               ) : null}
               {item.body ? (
                 <div className="space-y-3">
-                  <div className="flex justify-between items-center text-gray-400 dark:text-gray-600">
-                    <p className="font-black text-xs">RESPONSE BODY</p>
+                  <div className="flex items-center justify-between text-gray-400 dark:text-gray-600">
+                    <p className="text-xs font-black">RESPONSE BODY</p>
                     <Copy
                       text={item.body}
-                      className="text-xs hover:scale-125 transition"
+                      className="text-xs transition hover:scale-125"
                     />
                   </div>
                   <code className="code whitespace-pre-wrap">{item.body}</code>

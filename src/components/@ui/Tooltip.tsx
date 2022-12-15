@@ -10,12 +10,12 @@ type Props = {
 const Tooltip = (props: Props) => {
   const { title, description, className, children } = props
   return (
-    <div className="relative group">
+    <div className="group relative">
       {(title || description) && (
         <div
-          className={`absolute -top-12 left-1/2 -translate-x-1/2 whitespace-pre z-50
-          opacity-0 group-hover:opacity-100 transition pointer-events-none delay-300
-          bg-black rounded-sm px-2 py-1 text-white text-xs font-semibold
+          className={`pointer-events-none absolute -top-12 left-1/2 z-50 -translate-x-1/2
+          whitespace-pre rounded-sm bg-black px-2 py-1
+          text-xs font-semibold text-white opacity-0 transition delay-300 group-hover:opacity-100
           ${className}`}
         >
           {title && <p>{title}</p>}

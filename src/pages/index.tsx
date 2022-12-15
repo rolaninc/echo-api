@@ -5,7 +5,7 @@ import Demo from '../components/demo/Demo'
 
 const Page = () => {
   return (
-    <div className="w-screen h-screen background-color text-color">
+    <div className="background-color text-color h-screen w-screen">
       <Head>
         <title>Echo.api</title>
         {/*TODO: replace favicon*/}

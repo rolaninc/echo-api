@@ -1,8 +1,8 @@
 const Header = () => {
   return (
-    <nav className="h-full flex justify-between items-center">
+    <nav className="flex h-full items-center justify-between">
       <div className="px-6">
-        <span className="font-black text-3xl">Echo.api</span>
+        <span className="text-3xl font-black">Echo.api</span>
       </div>
     </nav>
   )

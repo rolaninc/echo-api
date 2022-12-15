@@ -100,15 +100,15 @@ const Form = (props: Props) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="px-6 py-4 h-full flex flex-col space-y-4"
+      className="flex h-full flex-col space-y-4 px-6 py-4"
     >
       {/*Editor*/}
       <div
-        className="grow rounded-lg secondary-background-color relative"
+        className="secondary-background-color relative grow rounded-lg"
         tabIndex={0}
       >
         {/*Header*/}
-        <div className="w-full h-[44px] bg-transparent flex justify-end items-center border-b border-color px-4">
+        <div className="border-color flex h-[44px] w-full items-center justify-end border-b bg-transparent px-4">
           <div className="flex items-center space-x-2">
             <Tooltip
               title="New Template"
@@ -120,11 +120,11 @@ const Form = (props: Props) => {
                 onClick={clearInput}
                 disabled={!isDirty}
                 className="
-                p-1 rounded-lg disabled:opacity-25
-                enabled:hover:bg-gray-100 enabled:dark:hover:bg-gray-700
+                rounded-lg p-1 enabled:hover:bg-gray-100
+                disabled:opacity-25 enabled:dark:hover:bg-gray-700
                 "
               >
-                <Icon variant="codePlus" className="w-[20px] h-[20px]" />
+                <Icon variant="codePlus" className="h-[20px] w-[20px]" />
               </button>
             </Tooltip>
 
@@ -138,11 +138,11 @@ const Form = (props: Props) => {
                 onClick={format}
                 disabled={!isValid}
                 className="
-                p-1 rounded-lg disabled:opacity-25
-                enabled:hover:bg-gray-100 enabled:dark:hover:bg-gray-700
+                rounded-lg p-1 enabled:hover:bg-gray-100
+                disabled:opacity-25 enabled:dark:hover:bg-gray-700
                 "
               >
-                <Icon variant="code" className="w-[20px] h-[20px]" />
+                <Icon variant="code" className="h-[20px] w-[20px]" />
               </button>
             </Tooltip>
           </div>
@@ -156,16 +156,16 @@ const Form = (props: Props) => {
           })}
           aria-invalid={errors.body ? 'true' : 'false'}
           placeholder="Create your request as JSON format"
-          className="code resize-none w-full h-[calc(100%-44px)] px-4 pb-4 pt-2 bg-transparent rounded-b-lg"
+          className="code h-[calc(100%-44px)] w-full resize-none rounded-b-lg bg-transparent px-4 pb-4 pt-2"
         />
 
         {/*Error message*/}
         {errors.body?.message && (
           <div
             className="
-            absolute left-[8px] bottom-[8px] w-[calc(100%-16px)] px-3 py-2 rounded-lg flex justify-center items-center
-            bg-destructive-500 dark:bg-destructive-dark-500
-            text-white font-mono text-sm
+            absolute left-[8px] bottom-[8px] flex w-[calc(100%-16px)] items-center justify-center rounded-lg bg-destructive-500 px-3
+            py-2 font-mono
+            text-sm text-white dark:bg-destructive-dark-500
             "
           >
             <p>{errors.body.message}</p>
@@ -174,7 +174,7 @@ const Form = (props: Props) => {
       </div>
 
       {/*Submit Button*/}
-      <div className="flex justify-center items-center">
+      <div className="flex items-center justify-center">
         <Tooltip
           title="Send request"
           description="opt + return"
@@ -184,10 +184,10 @@ const Form = (props: Props) => {
             type="submit"
             disabled={!isValid}
             className="
-            px-3 py-1 rounded-lg border disabled:opacity-25
-            text-sm font-semibold text-color border-color
-            enabled:hover:bg-gray-100 enabled:dark:hover:bg-gray-700
-            {/*enabled:transition enabled:transform enabled:hover:scale-125*/}
+            text-color border-color {/*enabled:transition enabled:hover:scale-125*/} rounded-lg
+            border px-3 py-1 text-sm
+            font-semibold enabled:transform
+            enabled:hover:bg-gray-100 disabled:opacity-25 enabled:dark:hover:bg-gray-700
             "
           >
             Send

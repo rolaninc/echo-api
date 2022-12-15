@@ -2,7 +2,7 @@ import Icon from './@ui/Icon'
 
 const Footer = () => {
   return (
-    <div className="h-full flex justify-between items-center font-medium text-xs">
+    <div className="flex h-full items-center justify-between text-xs font-medium">
       <div className="px-6 py-1">
         <p className="">
           Don&apos;t worry, I <span className="font-black">NEVER</span> collect
@@ -16,7 +16,7 @@ const Footer = () => {
           rel="noopener noreferrer"
           className=""
         >
-          <span className="flex items-center space-x-1 hover:scale-150 transition-transform">
+          <span className="flex items-center space-x-1 transition-transform hover:scale-150">
             <Icon variant="github" />
             <p>GitHub</p>
           </span>

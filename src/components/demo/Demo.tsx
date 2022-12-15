@@ -82,7 +82,7 @@ const Demo = () => {
 
   const template = data ? JSON.stringify(data, undefined, 2) : ''
   return (
-    <div className="h-full grid grid-cols-1 md:grid-cols-2 gap-0">
+    <div className="grid h-full grid-cols-1 gap-0 md:grid-cols-2">
       <div className="min-h-[480px]">
         <Form template={template} onSubmit={onSubmit} />
       </div>

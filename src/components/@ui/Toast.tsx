@@ -95,12 +95,12 @@ const Toast = (props: Props) => {
     <ToastContext.Provider value={toast}>
       <>
         {children}
-        <div className="fixed top-[8px] right-[8px] space-y-2 z-50">
+        <div className="fixed top-[8px] right-[8px] z-50 space-y-2">
           {/*TODO: refactor: it's better to split notification component away from here*/}
           {notifications.map((n) => (
             <div
               key={n.id}
-              className="w-[300px] drop-shadow-md ease-in-out animate-slide-in-right"
+              className="w-[300px] animate-slide-in-right drop-shadow-md ease-in-out"
             >
               <div
                 className={`w-full rounded-lg ${
@@ -108,7 +108,7 @@ const Toast = (props: Props) => {
                 }`}
               >
                 <div
-                  className={`flex p-2 space-x-2 text-white ${
+                  className={`flex space-x-2 p-2 text-white ${
                     !n.description && 'items-center'
                   }`}
                 >
@@ -116,10 +116,10 @@ const Toast = (props: Props) => {
                     {_STATUSES[n.status ?? 'success'].jsx}
                   </div>
                   <div className="grow">
-                    <p className="font-bold text-sm">{n.title}</p>
+                    <p className="text-sm font-bold">{n.title}</p>
                     {n.description && (
                       <>
-                        <p className="text-xs whitespace-pre-wrap">
+                        <p className="whitespace-pre-wrap text-xs">
                           {n.description}
                         </p>
                       </>
@@ -131,7 +131,7 @@ const Toast = (props: Props) => {
                         e.preventDefault()
                         clear(n.id)
                       }}
-                      className="hover:scale-125 transition-transform"
+                      className="transition-transform hover:scale-125"
                     >
                       <Icon variant="close" />
                     </button>

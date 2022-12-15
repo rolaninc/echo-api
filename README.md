@@ -38,7 +38,7 @@ you can control your requests using structured body.
       }
     },
     "users": {
-      "id": "--id",
+      "id": "--id@@cuid",
       "email": "--email@@name",
       "name": "--name",
       "thumb": "--image@@512",
@@ -47,8 +47,12 @@ you can control your requests using structured body.
       "updated": "--iso@@-86400"
     }
   },
-  "headers": {
-    "x-echo": "echo/api"
+  "error": {
+    "errors": [
+      {
+        "message": "Something went wrong 🤖"
+      }
+    ]
   },
   "options": {
     "duration": 0
@@ -64,7 +68,6 @@ all attributes are optional.
 | body       | the api will just send only body's content back if you have one. otherwise it will response an entire content of the request's body back to you. |
 | error      | alt content for when the status code is not in the 200s.                                                                                         |
 | statusCode | http status code which will be set to your response.                                                                                             |
-| headers    | T.B.D.                                                                                                                                           |
 | options    | json object that contains some attributes for customizing the api. see the table below.                                                          |
 
 ##### Options

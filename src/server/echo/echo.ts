@@ -88,9 +88,6 @@ const example = {
   error: {
     errors: [{ message: 'Something went wrong 🤖' }],
   },
-  headers: {
-    'x-echo': 'echo/api',
-  },
   options: {
     duration: 0,
   },

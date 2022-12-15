@@ -5,8 +5,8 @@ const Footer = () => {
     <div className="h-full flex justify-between items-center font-medium text-xs">
       <div className="px-6 py-1">
         <p className="">
-          Don't worry, I <span className="font-black">NEVER</span> collect any
-          data 🙈
+          Don&apos;t worry, I <span className="font-black">NEVER</span> collect
+          any data 🙈
         </p>
       </div>
       <div className="px-6 py-1">

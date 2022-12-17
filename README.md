@@ -1,7 +1,7 @@
-# Echo.api
+# echo.api
 
 ## What is it?
-Echo.api helps application developers (especially mobile apps developers) at their early stage of development.
+echo.api helps application developers (especially mobile apps developers) at their early stage of development.
 
 it's simple but real world api, so it helps design and create app's data models, and...
   * test these models immediately
@@ -9,7 +9,7 @@ it's simple but real world api, so it helps design and create app's data models,
 
 the one of the most important goals of the api is that it is out of the box tool and developers DO NOT need to install any other tools than their usual tools such as Xcode, Android Studio or something.
 
-just write requests on your favorite tools and send them using Echo.api 🚀
+just write requests on your favorite tools and send them using echo.api 🚀
 
 this project has been started as my very personal tool.
 if it's useful to me, I believe, it would be helpful for someone else.  
@@ -167,4 +167,8 @@ path components of image pages will map to the parameters of the request to the 
 [MIT License](https://github.com/tom-e-kid/echo-api/blob/main/LICENSE)
 
 ## See also
-[Echo.images](https://github.com/tom-e-kid/echo-images)
+[echo.api: playground](https://echo-api-sigma.vercel.app)  
+[echo.images](https://github.com/tom-e-kid/echo-images)  
+[echo.toolbox](https://github.com/tom-e-kid/echo-toolbox)  
+[echo.ios](https://github.com/tom-e-kid/echo-ios)
+
